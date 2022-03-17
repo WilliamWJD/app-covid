@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, HeaderContent, HeaderContentTitle, HeaderContentSubTitle, ContentTitle } from './styles';
+import { FontAwesome } from '@expo/vector-icons'
+import { Container, HeaderContent, HeaderContentTitle, HeaderContentSubTitle, ContentTitle, ImageBack, ButtonNext, ButtonNextText } from './styles';
 
 import BackImagePresentation from '../../images/back-presentation.png';
 
@@ -9,11 +10,19 @@ export function Presentation() {
             <HeaderContent>
                 <ContentTitle>
                     <HeaderContentTitle>Covid Cases</HeaderContentTitle>
-                    <HeaderContentSubTitle>Monitore os casos de covid 19
+                    <HeaderContentSubTitle>
+                        Monitore os casos de covid 19
                         pelo mundo realizando um filtro
-                        por país</HeaderContentSubTitle>
+                        por país
+                    </HeaderContentSubTitle>
                 </ContentTitle>
             </HeaderContent>
+            <ImageBack source={BackImagePresentation} />
+            <ButtonNext>
+                <ButtonNextText>
+                    <FontAwesome name="angle-right" size={28} color="#fff" />
+                </ButtonNextText>
+            </ButtonNext>
         </Container>
     )
 }

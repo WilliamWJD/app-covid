@@ -28,3 +28,23 @@ export const HeaderContentSubTitle = styled.Text`
     line-height: 28px;
     margin-top:18px;
 `;
+
+export const ImageBack = styled.Image`
+    margin-top:-120px;
+    align-self: center;
+`;
+
+export const ButtonNext = styled.TouchableOpacity`
+    width:68px;
+    height:58px;
+    background-color: #EE7473;
+    border-radius: 15px;
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: 55px;
+
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ButtonNextText = styled.Text``;
