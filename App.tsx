@@ -3,6 +3,7 @@ import { View, Text, StatusBar } from 'react-native';
 import { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu'
 
 import { Presentation } from './src/pages/Presentation';
+import { GetStarted } from './src/pages/GetStarted';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,7 +22,7 @@ export default function App() {
   return (
     <>
       <StatusBar backgroundColor="#5C6FAD" />
-      <Presentation />
+      <GetStarted />
     </>
   )
 }

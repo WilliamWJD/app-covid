@@ -18,7 +18,7 @@ export function Presentation() {
                 </ContentTitle>
             </HeaderContent>
             <ImageBack source={BackImagePresentation} />
-            <ButtonNext>
+            <ButtonNext activeOpacity={0.5}>
                 <ButtonNextText>
                     <FontAwesome name="angle-right" size={28} color="#fff" />
                 </ButtonNextText>
