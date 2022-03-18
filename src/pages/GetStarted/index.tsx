@@ -6,7 +6,7 @@ export function GetStarted() {
     return (
         <Container>
             <Description>
-                😀 Antes de começarmos
+                😀 Antes de começarmos,
                 como podemos te chamar ?
             </Description>
 

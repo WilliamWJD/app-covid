@@ -3,8 +3,11 @@ import { FontAwesome } from '@expo/vector-icons'
 import { Container, HeaderContent, HeaderContentTitle, HeaderContentSubTitle, ContentTitle, ImageBack, ButtonNext, ButtonNextText } from './styles';
 
 import BackImagePresentation from '../../images/back-presentation.png';
+import { useNavigation } from '@react-navigation/native';
 
 export function Presentation() {
+    const { navigate } = useNavigation();
+
     return (
         <Container>
             <HeaderContent>
@@ -18,7 +21,7 @@ export function Presentation() {
                 </ContentTitle>
             </HeaderContent>
             <ImageBack source={BackImagePresentation} />
-            <ButtonNext activeOpacity={0.5}>
+            <ButtonNext activeOpacity={0.5} onPress={() => navigate('GetStarted')}>
                 <ButtonNextText>
                     <FontAwesome name="angle-right" size={28} color="#fff" />
                 </ButtonNextText>
