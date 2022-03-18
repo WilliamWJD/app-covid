@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons'
+import { Alert, AsyncStorage } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { Container, HeaderContent, HeaderContentTitle, HeaderContentSubTitle, ContentTitle, ImageBack, ButtonNext, ButtonNextText } from './styles';
 
 import BackImagePresentation from '../../images/back-presentation.png';
-import { useNavigation } from '@react-navigation/native';
 
 export function Presentation() {
     const { navigate } = useNavigation();
@@ -21,7 +23,7 @@ export function Presentation() {
                 </ContentTitle>
             </HeaderContent>
             <ImageBack source={BackImagePresentation} />
-            <ButtonNext activeOpacity={0.5} onPress={() => navigate('GetStarted')}>
+            <ButtonNext activeOpacity={0.5} onPress={() => navigate('GetStarted' as never)}>
                 <ButtonNextText>
                     <FontAwesome name="angle-right" size={28} color="#fff" />
                 </ButtonNextText>
