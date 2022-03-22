@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import { useFonts, Ubuntu_400Regular, Ubuntu_700Bold } from '@expo-google-fonts/ubuntu'
-
+import 'intl'
+import 'intl/locale-data/jsonp/pt-BR'
 import { Routes } from './src/routes';
+import { Loading } from './src/components/Loading';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -13,7 +15,7 @@ export default function App() {
   if (!fontsLoaded) {
     return (
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Carregando</Text>
+        <Loading />
       </View>
     )
   }

@@ -12,6 +12,8 @@ export const Header = styled.View`
     justify-content: space-between;
 `;
 
+export const ButtonBack = styled.TouchableOpacity``;
+
 export const Welcome = styled.View``;
 
 export const SalutationText = styled.Text`

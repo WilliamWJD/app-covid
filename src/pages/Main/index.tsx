@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Alert, Text, ScrollView } from 'react-native';
+import { Alert, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+import { api } from '../../services/api';
 
 import {
     Container,
     Header,
+    ButtonBack,
     Welcome,
     SalutationText,
     UserName,
@@ -23,11 +26,21 @@ import {
 } from './styles';
 
 import BackMain from '../../images/back-main.png';
+import { Loading } from '../../components/Loading';
+
+interface WorldCasesProps {
+    TotalConfirmed: number;
+    TotalDeaths: number;
+    TotalRecovered: number;
+}
 
 export function Main() {
     const [name, setName] = useState('');
     const [salutation, setSalutation] = useState('');
     const [loading, setLoading] = useState(true);
+    const [worldCases, setWorldCases] = useState<WorldCasesProps>({} as WorldCasesProps);
+
+    const navigation = useNavigation();
 
     useEffect(() => {
         async function LoadName() {
@@ -48,6 +61,10 @@ export function Main() {
                     setSalutation('Boa noite')
                 }
 
+                const response = await api.get('/world/total');
+
+                setWorldCases(response.data);
+
                 setLoading(false)
             } catch (err) {
                 console.log(err);
@@ -59,17 +76,25 @@ export function Main() {
         LoadName();
     }, [])
 
+    async function handleGoBack() {
+        await AsyncStorage.removeItem("@username");
+        navigation.goBack()
+    }
+
     if (loading) {
         return (
-            <Text>Carregando</Text>
+            <Loading />
         )
     }
 
     return (
         <Container>
             <Header>
+                <ButtonBack onPress={handleGoBack}>
+                    <FontAwesome name="angle-left" color="#5C6FAD" size={37} />
+                </ButtonBack>
                 <Welcome>
-                    <SalutationText>{salutation}</SalutationText>
+                    <SalutationText>🙂 {salutation}</SalutationText>
                     <UserName>{name}</UserName>
                 </Welcome>
                 <ButtonFilter>
@@ -92,12 +117,12 @@ export function Main() {
                 <BoxTypeCases horizontal={true} showsHorizontalScrollIndicator={false}>
                     <BoxTypeCaseItem>
                         <BoxTypeCaseItemTitle>Confirmados</BoxTypeCaseItemTitle>
-                        <BoxTypeCaseItemValue>460.000,00</BoxTypeCaseItemValue>
+                        <BoxTypeCaseItemValue>{Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(worldCases.TotalConfirmed)}</BoxTypeCaseItemValue>
                     </BoxTypeCaseItem>
 
                     <BoxTypeCaseItem style={{ backgroundColor: '#EE7473' }}>
                         <BoxTypeCaseItemTitle>Mortes</BoxTypeCaseItemTitle>
-                        <BoxTypeCaseItemValue>6.050,00</BoxTypeCaseItemValue>
+                        <BoxTypeCaseItemValue>{Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(worldCases.TotalDeaths)}</BoxTypeCaseItemValue>
                     </BoxTypeCaseItem>
 
                     <BoxTypeCaseItem style={{ backgroundColor: '#2ECC71' }}>

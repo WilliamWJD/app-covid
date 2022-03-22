@@ -9,6 +9,7 @@ import { Main } from '../pages/Main';
 import { Presentation } from '../pages/Presentation';
 import { useEffect } from 'react';
 import { Text } from 'react-native';
+import { Loading } from '../components/Loading';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +31,7 @@ export function Routes() {
 
     if (loading) {
         return (
-            <Text>Carregando</Text>
+            <Loading />
         )
     }
 
