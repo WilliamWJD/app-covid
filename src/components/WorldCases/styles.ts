@@ -14,14 +14,16 @@ export const WorldCaseImage = styled.Image`
     margin-top: 18px;
 `;
 
-export const BoxTypeCases = styled.ScrollView`
+export const BoxTypeCases = styled.View`
+    width: 100%;
     margin-top:35px;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 export const BoxTypeCaseItem = styled.View`
-    width:127px;
+    width:48%;
     height:65px;
-    margin-right:20px;
     background-color: #5C6FAD;
     border-radius: 5px;
 

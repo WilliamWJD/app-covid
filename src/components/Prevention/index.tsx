@@ -1,5 +1,4 @@
 import React from 'react';
-import { FontAwesome } from '@expo/vector-icons';
 
 import { Container, ContentPreventionText } from './styles';
 
@@ -7,10 +6,8 @@ export function Prevention() {
     return (
         <Container activeOpacity={0.5}>
             <ContentPreventionText>
-                Como evitar a contaminação
-                por covid-19
+                Lave as mãos com água e sabão por pelo menos 20 segundos, especialmente depois de estar em um local público ou depois de assoar o nariz, tossir ou espirrar.
             </ContentPreventionText>
-            <FontAwesome name="angle-right" color="#443F70" size={28} />
         </Container>
     )
 }

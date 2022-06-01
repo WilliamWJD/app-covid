@@ -6,15 +6,14 @@ export const Container = styled.TouchableOpacity`
     height:100px;
     background-color:#CFD7EC;
     border-radius: 10px;
-    padding: 34px 22px;
+    padding: 5px 20px;
 
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 `;
 
 export const ContentPreventionText = styled.Text`
-    width:191px;
+    /* width:191px; */
     font-family: 'Ubuntu_700Bold';
     color:#443F70;
 `;

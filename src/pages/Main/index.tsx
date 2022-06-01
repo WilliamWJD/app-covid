@@ -14,17 +14,16 @@ import { Header } from '../../components/Header';
 import { WorldCases } from '../../components/WorldCases';
 import { Prevention } from '../../components/Prevention';
 
-export interface WorldCasesProps {
-    TotalConfirmed: number;
-    TotalDeaths: number;
-    TotalRecovered?: number;
+export interface BrazilCases {
+    confirmed: number;
+    deaths: number;
 }
 
 export function Main() {
     const [name, setName] = useState('');
     const [salutation, setSalutation] = useState('');
     const [loading, setLoading] = useState(true);
-    const [worldCases, setWorldCases] = useState<WorldCasesProps>({} as WorldCasesProps);
+    const [brazilCases, setBrazilCases] = useState<BrazilCases>({} as BrazilCases);
 
     const navigation = useNavigation();
 
@@ -47,9 +46,8 @@ export function Main() {
                     setSalutation('Boa noite')
                 }
 
-                const response = await api.get('/world/total');
-
-                setWorldCases(response.data);
+                const response = await api.get('/brazil');
+                setBrazilCases(response.data.data);
 
                 setLoading(false)
             } catch (err) {
@@ -84,8 +82,8 @@ export function Main() {
             <Prevention />
 
             <WorldCases
-                TotalConfirmed={worldCases.TotalConfirmed}
-                TotalDeaths={worldCases.TotalDeaths}
+                confirmed={brazilCases.confirmed}
+                deaths={brazilCases.deaths}
             />
         </Container>
     )
