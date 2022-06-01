@@ -13,6 +13,7 @@ import { Loading } from '../../components/Loading';
 import { Header } from '../../components/Header';
 import { WorldCases } from '../../components/WorldCases';
 import { Prevention } from '../../components/Prevention';
+import { ModalEstado } from '../../components/Modal';
 
 export interface BrazilCases {
     confirmed: number;
@@ -23,6 +24,7 @@ export function Main() {
     const [name, setName] = useState('');
     const [salutation, setSalutation] = useState('');
     const [loading, setLoading] = useState(true);
+    const [modalVisible, setModalVisible] = useState(false);
     const [brazilCases, setBrazilCases] = useState<BrazilCases>({} as BrazilCases);
 
     const navigation = useNavigation();
@@ -65,6 +67,10 @@ export function Main() {
         navigation.goBack()
     }
 
+    function closeModal() {
+        setModalVisible(!modalVisible);
+    }
+
     if (loading) {
         return (
             <Loading />
@@ -77,6 +83,7 @@ export function Main() {
                 handleGoBack={handleGoBack}
                 salutation={salutation}
                 name={name}
+                showModal={closeModal}
             />
 
             <Prevention />
@@ -84,6 +91,11 @@ export function Main() {
             <WorldCases
                 confirmed={brazilCases.confirmed}
                 deaths={brazilCases.deaths}
+            />
+
+            <ModalEstado
+                showModal={modalVisible}
+                closeModal={closeModal}
             />
         </Container>
     )
